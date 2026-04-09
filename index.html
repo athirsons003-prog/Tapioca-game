@@ -10,7 +10,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #fdf6ec, #f8e8d8);
+  background: linear-gradient(135deg, #fffaf0, #f5f5dc);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,7 @@ body {
 .container {
   width: 90%;
   max-width: 600px;
-  background: #fffaf5;
+  background: #fffdf7;
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
@@ -46,25 +46,20 @@ button {
   margin: 10px 0;
   padding: 12px;
   border-radius: 12px;
-  background: #f3d9c1;
+  background: #f3e5ab;
   color: #5d4037;
   font-weight: 600;
   cursor: pointer;
-  border: 2px solid #e0bfa4;
-  transition: all 0.25s ease;
+  border: 2px solid #e0c97f;
+  transition: 0.25s;
 }
 
 button:hover {
   transform: scale(1.05);
-  background: #efd2b8;
-}
-
-button:active {
-  transform: scale(0.95);
 }
 
 .start {
-  background: #e6c7a7;
+  background: #d7ccc8;
 }
 
 .voltar {
@@ -72,28 +67,25 @@ button:active {
   top: 15px;
   right: 15px;
   width: auto;
-  padding: 8px 15px;
 }
 
 .barra {
   height: 8px;
-  background: #f1e3d3;
+  background: #eee;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 
 .progresso {
   height: 100%;
-  background: #d2a98a;
+  background: #bcaaa4;
   width: 0%;
   border-radius: 10px;
-  transition: width 0.3s;
 }
 
 .resultado {
   font-size: 22px;
   font-weight: bold;
-  color: #6d4c41;
 }
 </style>
 </head>
@@ -102,8 +94,8 @@ button:active {
 
 <!-- MENU -->
 <div class="container tela ativa" id="menu">
-  <h1>🥞 Tapioca</h1>
-  <p>Explore a química por trás da tapioca!</p>
+  <h1>🥥 Tapioca</h1>
+  <p>Explore a ciência por trás da preparação da tapioca!</p>
 
   <button class="start" onclick="iniciarJogo()">▶ Start</button>
   <button onclick="abrirCreditos()">📜 Créditos</button>
@@ -113,7 +105,7 @@ button:active {
 <div class="container tela" id="creditos">
   <button class="voltar" onclick="voltarMenu()">⬅ Voltar</button>
   <h1>Créditos</h1>
-  <p>Jogo educativo sobre a química da tapioca.</p>
+  <p>Jogo educativo sobre a tapioca.</p>
 </div>
 
 <!-- JOGO -->
@@ -124,90 +116,87 @@ button:active {
 </div>
 
 <div class="tela ativa" id="tela1">
-  <h1>Bem-vindo!</h1>
-  <button onclick="proximaTela()">Começar</button>
+<h1>Bem-vindo!</h1>
+<button onclick="proximaTela()">Começar</button>
 </div>
 
 <div class="tela" id="tela2">
-  <h2>Missão</h2>
-  <p>Investigue como o amido da mandioca se transforma em uma estrutura coesa quando aquecido.</p>
-  <button onclick="proximaTela()">Continuar</button>
+<h2>Missão</h2>
+<p>Descubra como o calor transforma a goma de tapioca em um alimento sólido.</p>
+<button onclick="proximaTela()">Continuar</button>
 </div>
 
 <div class="tela" id="tela3">
-  <h2>A tapioca é feita de:</h2>
-  <button onclick="responder(true)">Mandioca</button>
-  <button onclick="responder(false)">Milho</button>
-  <button onclick="responder(false)">Trigo</button>
+<h2>A goma de tapioca é inicialmente:</h2>
+<button onclick="responder(true,'A goma de tapioca é inicialmente:','Granulada e seca','Granulada e seca')">Granulada e seca</button>
+<button onclick="responder(false,'A goma de tapioca é inicialmente:','Líquida','Granulada e seca')">Líquida</button>
+<button onclick="responder(false,'A goma de tapioca é inicialmente:','Gasosa','Granulada e seca')">Gasosa</button>
 </div>
 
 <div class="tela" id="tela4">
-  <h2>A goma de tapioca é composta principalmente por:</h2>
-  <button onclick="responder(true)">Amido</button>
-  <button onclick="responder(false)">Proteína</button>
-  <button onclick="responder(false)">Lipídios</button>
+<h2>O calor na frigideira:</h2>
+<button onclick="responder(true,'O calor na frigideira:','Aquece a goma','Aquece a goma')">Aquece a goma</button>
+<button onclick="responder(false,'O calor na frigideira:','Esfria a goma','Aquece a goma')">Esfria a goma</button>
+<button onclick="responder(false,'O calor na frigideira:','Não altera','Aquece a goma')">Não altera</button>
 </div>
 
 <div class="tela" id="tela5">
-  <h2>Como é preparada?</h2>
-  <button onclick="responder(true)">Aquecida em frigideira</button>
-  <button onclick="responder(false)">Fervida em água</button>
-  <button onclick="responder(false)">Assada no forno</button>
+<h2>A goma se transforma porque:</h2>
+<button onclick="responder(true,'A goma se transforma porque:','Recebe calor','Recebe calor')">Recebe calor</button>
+<button onclick="responder(false,'A goma se transforma porque:','Perde luz','Recebe calor')">Perde luz</button>
+<button onclick="responder(false,'A goma se transforma porque:','Ganha vento','Recebe calor')">Ganha vento</button>
 </div>
 
 <div class="tela" id="tela6">
-  <h2>O aquecimento provoca:</h2>
-  <button onclick="responder(true)">Gelatinização do amido</button>
-  <button onclick="responder(false)">Queima direta</button>
-  <button onclick="responder(false)">Evaporação total</button>
+<h2>O calor se espalha pela frigideira por:</h2>
+<button onclick="responder(true,'O calor se espalha por:','Condução','Condução')">Condução</button>
+<button onclick="responder(false,'O calor se espalha por:','Som','Condução')">Som</button>
+<button onclick="responder(false,'O calor se espalha por:','Luz','Condução')">Luz</button>
 </div>
 
 <div class="tela" id="tela7">
-  <h2>O amido é composto por:</h2>
-  <button onclick="responder(true)">Amilose e amilopectina</button>
-  <button onclick="responder(false)">Açúcares simples apenas</button>
-  <button onclick="responder(false)">Proteínas e lipídios</button>
+<h2>A tapioca fica firme porque:</h2>
+<button onclick="responder(true,'A tapioca fica firme porque:','O calor altera sua estrutura','O calor altera sua estrutura')">O calor altera sua estrutura</button>
+<button onclick="responder(false,'A tapioca fica firme porque:','Esfria apenas','O calor altera sua estrutura')">Esfria apenas</button>
+<button onclick="responder(false,'A tapioca fica firme porque:','Seca no ar','O calor altera sua estrutura')">Seca no ar</button>
 </div>
 
 <div class="tela" id="tela8">
-  <h2>A gelatinização ocorre porque:</h2>
-  <button onclick="responder(true)">O amido absorve água e se reorganiza</button>
-  <button onclick="responder(false)">A água evapora completamente</button>
-  <button onclick="responder(false)">O amido vira gás</button>
+<h2>Virar a tapioca ajuda a:</h2>
+<button onclick="responder(true,'Virar a tapioca ajuda a:','Distribuir calor','Distribuir calor')">Distribuir calor</button>
+<button onclick="responder(false,'Virar a tapioca ajuda a:','Esfriar','Distribuir calor')">Esfriar</button>
+<button onclick="responder(false,'Virar a tapioca ajuda a:','Parar o cozimento','Distribuir calor')">Parar o cozimento</button>
 </div>
 
 <div class="tela" id="tela9">
-  <h2>O resultado final da tapioca é:</h2>
-  <button onclick="responder(true)">Uma estrutura coesa e flexível</button>
-  <button onclick="responder(false)">Um líquido</button>
-  <button onclick="responder(false)">Um pó seco</button>
+<h2>A tapioca é típica de:</h2>
+<button onclick="responder(true,'A tapioca é típica de:','Norte e Nordeste','Norte e Nordeste')">Norte e Nordeste</button>
+<button onclick="responder(false,'A tapioca é típica de:','Europa','Norte e Nordeste')">Europa</button>
+<button onclick="responder(false,'A tapioca é típica de:','África','Norte e Nordeste')">África</button>
 </div>
 
-<!-- NOVAS TELAS COM MAIS QUÍMICA -->
-
 <div class="tela" id="tela10">
-  <h2>Complete:</h2>
-  <p>O principal componente da tapioca é o <strong>__________</strong>, um polissacarídeo.</p>
-
-  <button onclick="responder(true)">Amido</button>
-  <button onclick="responder(false)">Lipídio</button>
-  <button onclick="responder(false)">Proteína</button>
+<h2>Complete:</h2>
+<p>O cozimento acontece devido ao <strong>__________</strong>.</p>
+<button onclick="responder(true,'Cozimento:','Calor','Calor')">Calor</button>
+<button onclick="responder(false,'Cozimento:','Frio','Calor')">Frio</button>
+<button onclick="responder(false,'Cozimento:','Vento','Calor')">Vento</button>
 </div>
 
 <div class="tela" id="tela11">
-  <h2>Complete:</h2>
-  <p>Durante o aquecimento, ocorre a <strong>__________</strong>, processo em que os grânulos absorvem água e se expandem.</p>
-
-  <button onclick="responder(true)">Gelatinização</button>
-  <button onclick="responder(false)">Oxidação</button>
-  <button onclick="responder(false)">Fermentação</button>
+<h2>Complete:</h2>
+<p>A tapioca muda de estado por causa do <strong>__________</strong>.</p>
+<button onclick="responder(true,'Mudança:','Calor','Calor')">Calor</button>
+<button onclick="responder(false,'Mudança:','Som','Calor')">Som</button>
+<button onclick="responder(false,'Mudança:','Luz','Calor')">Luz</button>
 </div>
 
-<!-- RESULTADO -->
 <div class="tela" id="tela12">
-  <h1>🎉 Resultado</h1>
-  <p class="resultado" id="resultado"></p>
-  <button onclick="reiniciarJogo()">🏠 Voltar ao início</button>
+<h1>🎉 Resultado</h1>
+<p class="resultado" id="resultado"></p>
+
+<button onclick="gerarRelatorio()">📄 Gerar relatório</button>
+<button onclick="reiniciarJogo()">🏠 Voltar</button>
 </div>
 
 </div>
@@ -216,72 +205,79 @@ button:active {
 let telaAtual = 1;
 let pontuacao = 0;
 let totalTelas = 12;
+let respostasUsuario = [];
 
-/* MENU */
-function iniciarJogo() {
+function iniciarJogo(){
   document.getElementById("menu").classList.remove("ativa");
   document.getElementById("jogo").classList.add("ativa");
-  telaAtual = 1;
-  atualizarBarra();
 }
 
-function abrirCreditos() {
+function abrirCreditos(){
   document.getElementById("menu").classList.remove("ativa");
   document.getElementById("creditos").classList.add("ativa");
 }
 
-function voltarMenu() {
+function voltarMenu(){
   document.getElementById("creditos").classList.remove("ativa");
   document.getElementById("menu").classList.add("ativa");
 }
 
-/* JOGO */
-function atualizarBarra() {
-  let progresso = ((telaAtual - 1) / (totalTelas - 1)) * 100;
-  document.getElementById("progresso").style.width = progresso + "%";
+function atualizarBarra(){
+  let progresso = ((telaAtual-1)/(totalTelas-1))*100;
+  document.getElementById("progresso").style.width = progresso+"%";
 }
 
-function trocarTela(proxima) {
-  const atual = document.getElementById("tela" + telaAtual);
-  atual.classList.remove("ativa");
+function proximaTela(){
+  document.getElementById("tela"+telaAtual).classList.remove("ativa");
+  telaAtual++;
+  document.getElementById("tela"+telaAtual).classList.add("ativa");
 
-  setTimeout(() => {
-    telaAtual = proxima;
-    document.getElementById("tela" + telaAtual).classList.add("ativa");
-    atualizarBarra();
+  atualizarBarra();
 
-    if (telaAtual === 12) {
-      document.getElementById("resultado").innerText =
-        "Você fez " + pontuacao + " pontos!";
-    }
-
-  }, 200);
+  if(telaAtual===12){
+    document.getElementById("resultado").innerText="Você fez "+pontuacao+" pontos!";
+  }
 }
 
-function proximaTela() {
-  trocarTela(telaAtual + 1);
-}
-
-function responder(correta) {
-  if (correta) pontuacao++;
+function responder(correta,pergunta,resposta,corretaTexto){
+  respostasUsuario.push({pergunta,resposta,correta:corretaTexto,acertou:correta});
+  if(correta) pontuacao++;
   proximaTela();
 }
 
-function reiniciarJogo() {
-  for (let i = 1; i <= totalTelas; i++) {
-    const tela = document.getElementById("tela" + i);
-    if (tela) tela.classList.remove("ativa");
-  }
+function reiniciarJogo(){
+  location.reload();
+}
 
-  telaAtual = 1;
-  pontuacao = 0;
+function gerarRelatorio(){
+  let nova=window.open("","_blank");
 
-  document.getElementById("tela1").classList.add("ativa");
+  let html=`
+  <html><head><title>Relatório</title>
+  <style>
+  body{font-family:Arial;padding:20px;}
+  .certo{color:green;}
+  .errado{color:red;}
+  </style>
+  </head><body>
 
-  document.getElementById("jogo").classList.remove("ativa");
-  document.getElementById("menu").classList.add("ativa");
+  <h1>Relatório - Tapioca</h1>
+  <p>Pontuação: ${pontuacao}</p><hr>
+  `;
 
-  atualizarBarra();
+  respostasUsuario.forEach((r,i)=>{
+    html+=`
+    <p><b>${i+1}. ${r.pergunta}</b></p>
+    <p>Sua resposta: ${r.resposta}</p>
+    <p>Correta: ${r.correta}</p>
+    <p class="${r.acertou?'certo':'errado'}">
+    ${r.acertou?'✔ Acertou':'✘ Errou'}
+    </p><hr>`;
+  });
+
+  html+=`<button onclick="window.print()">📄 Salvar como PDF</button></body></html>`;
+
+  nova.document.write(html);
 }
 
 atualizarBarra();
