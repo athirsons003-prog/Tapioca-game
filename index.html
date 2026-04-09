@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Tapioca</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fdf6ec, #f8e8d8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  background: #fffaf5;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  text-align: center;
+  position: relative;
+}
+
+.tela {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.ativa {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f3d9c1;
+  color: #5d4037;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid #e0bfa4;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #efd2b8;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.start {
+  background: #e6c7a7;
+}
+
+.voltar {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: auto;
+  padding: 8px 15px;
+}
+
+.barra {
+  height: 8px;
+  background: #f1e3d3;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.progresso {
+  height: 100%;
+  background: #d2a98a;
+  width: 0%;
+  border-radius: 10px;
+  transition: width 0.3s;
+}
+
+.resultado {
+  font-size: 22px;
+  font-weight: bold;
+  color: #6d4c41;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<div class="container tela ativa" id="menu">
+  <h1>🥞 Tapioca</h1>
+  <p>Explore a química por trás da tapioca!</p>
+
+  <button class="start" onclick="iniciarJogo()">▶ Start</button>
+  <button onclick="abrirCreditos()">📜 Créditos</button>
+</div>
+
+<!-- CRÉDITOS -->
+<div class="container tela" id="creditos">
+  <button class="voltar" onclick="voltarMenu()">⬅ Voltar</button>
+  <h1>Créditos</h1>
+  <p>Jogo educativo sobre a química da tapioca.</p>
+</div>
+
+<!-- JOGO -->
+<div class="container tela" id="jogo">
+
+<div class="barra">
+  <div class="progresso" id="progresso"></div>
+</div>
+
+<div class="tela ativa" id="tela1">
+  <h1>Bem-vindo!</h1>
+  <button onclick="proximaTela()">Começar</button>
+</div>
+
+<div class="tela" id="tela2">
+  <h2>Missão</h2>
+  <p>Investigue como o amido da mandioca se transforma em uma estrutura coesa quando aquecido.</p>
+  <button onclick="proximaTela()">Continuar</button>
+</div>
+
+<div class="tela" id="tela3">
+  <h2>A tapioca é feita de:</h2>
+  <button onclick="responder(true)">Mandioca</button>
+  <button onclick="responder(false)">Milho</button>
+  <button onclick="responder(false)">Trigo</button>
+</div>
+
+<div class="tela" id="tela4">
+  <h2>A goma de tapioca é composta principalmente por:</h2>
+  <button onclick="responder(true)">Amido</button>
+  <button onclick="responder(false)">Proteína</button>
+  <button onclick="responder(false)">Lipídios</button>
+</div>
+
+<div class="tela" id="tela5">
+  <h2>Como é preparada?</h2>
+  <button onclick="responder(true)">Aquecida em frigideira</button>
+  <button onclick="responder(false)">Fervida em água</button>
+  <button onclick="responder(false)">Assada no forno</button>
+</div>
+
+<div class="tela" id="tela6">
+  <h2>O aquecimento provoca:</h2>
+  <button onclick="responder(true)">Gelatinização do amido</button>
+  <button onclick="responder(false)">Queima direta</button>
+  <button onclick="responder(false)">Evaporação total</button>
+</div>
+
+<div class="tela" id="tela7">
+  <h2>O amido é composto por:</h2>
+  <button onclick="responder(true)">Amilose e amilopectina</button>
+  <button onclick="responder(false)">Açúcares simples apenas</button>
+  <button onclick="responder(false)">Proteínas e lipídios</button>
+</div>
+
+<div class="tela" id="tela8">
+  <h2>A gelatinização ocorre porque:</h2>
+  <button onclick="responder(true)">O amido absorve água e se reorganiza</button>
+  <button onclick="responder(false)">A água evapora completamente</button>
+  <button onclick="responder(false)">O amido vira gás</button>
+</div>
+
+<div class="tela" id="tela9">
+  <h2>O resultado final da tapioca é:</h2>
+  <button onclick="responder(true)">Uma estrutura coesa e flexível</button>
+  <button onclick="responder(false)">Um líquido</button>
+  <button onclick="responder(false)">Um pó seco</button>
+</div>
+
+<!-- NOVAS TELAS COM MAIS QUÍMICA -->
+
+<div class="tela" id="tela10">
+  <h2>Complete:</h2>
+  <p>O principal componente da tapioca é o <strong>__________</strong>, um polissacarídeo.</p>
+
+  <button onclick="responder(true)">Amido</button>
+  <button onclick="responder(false)">Lipídio</button>
+  <button onclick="responder(false)">Proteína</button>
+</div>
+
+<div class="tela" id="tela11">
+  <h2>Complete:</h2>
+  <p>Durante o aquecimento, ocorre a <strong>__________</strong>, processo em que os grânulos absorvem água e se expandem.</p>
+
+  <button onclick="responder(true)">Gelatinização</button>
+  <button onclick="responder(false)">Oxidação</button>
+  <button onclick="responder(false)">Fermentação</button>
+</div>
+
+<!-- RESULTADO -->
+<div class="tela" id="tela12">
+  <h1>🎉 Resultado</h1>
+  <p class="resultado" id="resultado"></p>
+  <button onclick="reiniciarJogo()">🏠 Voltar ao início</button>
+</div>
+
+</div>
+
+<script>
+let telaAtual = 1;
+let pontuacao = 0;
+let totalTelas = 12;
+
+/* MENU */
+function iniciarJogo() {
+  document.getElementById("menu").classList.remove("ativa");
+  document.getElementById("jogo").classList.add("ativa");
+  telaAtual = 1;
+  atualizarBarra();
+}
+
+function abrirCreditos() {
+  document.getElementById("menu").classList.remove("ativa");
+  document.getElementById("creditos").classList.add("ativa");
+}
+
+function voltarMenu() {
+  document.getElementById("creditos").classList.remove("ativa");
+  document.getElementById("menu").classList.add("ativa");
+}
+
+/* JOGO */
+function atualizarBarra() {
+  let progresso = ((telaAtual - 1) / (totalTelas - 1)) * 100;
+  document.getElementById("progresso").style.width = progresso + "%";
+}
+
+function trocarTela(proxima) {
+  const atual = document.getElementById("tela" + telaAtual);
+  atual.classList.remove("ativa");
+
+  setTimeout(() => {
+    telaAtual = proxima;
+    document.getElementById("tela" + telaAtual).classList.add("ativa");
+    atualizarBarra();
+
+    if (telaAtual === 12) {
+      document.getElementById("resultado").innerText =
+        "Você fez " + pontuacao + " pontos!";
+    }
+
+  }, 200);
+}
+
+function proximaTela() {
+  trocarTela(telaAtual + 1);
+}
+
+function responder(correta) {
+  if (correta) pontuacao++;
+  proximaTela();
+}
+
+function reiniciarJogo() {
+  for (let i = 1; i <= totalTelas; i++) {
+    const tela = document.getElementById("tela" + i);
+    if (tela) tela.classList.remove("ativa");
+  }
+
+  telaAtual = 1;
+  pontuacao = 0;
+
+  document.getElementById("tela1").classList.add("ativa");
+
+  document.getElementById("jogo").classList.remove("ativa");
+  document.getElementById("menu").classList.add("ativa");
+
+  atualizarBarra();
+}
+
+atualizarBarra();
+</script>
+
+</body>
+</html>
